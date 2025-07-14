@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Handball Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #E53935 0%, #FF5722 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #FFC107;
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: #1976D2;
+            color: white;
+        }
+
+        .btn-info {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #E53935;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #E53935, #FF5722);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #E53935;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e3f2fd;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #E53935;
+        }
+
+        .tips-list li:before {
+            content: "🤾 ";
+            margin-right: 0.5rem;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .position-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .position-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #E53935, #FF5722);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .competitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .competition-card {
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            color: #000;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .competition-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .competition-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .competition-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤾 The Ultimate Handball Hub</h1>
+            <p class="subtitle">Your complete guide to the world's fastest team sport</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Handball Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🤾 Amazing Handball Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Olympic Sport</h3>
+                    <p>Handball has been an Olympic sport since 1936 for men and 1976 for women, making it one of the most popular team sports globally!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Speed Record</h3>
+                    <p>The fastest handball throw recorded was 131 km/h (81 mph) by Mikkel Hansen - faster than most baseball pitches!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>European Dominance</h3>
+                    <p>Handball is most popular in Europe, with over 19 million players worldwide and 795,000 teams registered!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Ancient Origins</h3>
+                    <p>Modern handball evolved from ancient games played in Egypt, Greece, and Rome over 2,000 years ago!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World Championships</h3>
+                    <p>The IHF World Championship is held every two years and is the most prestigious handball tournament outside the Olympics!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Gender Equality</h3>
+                    <p>Handball is one of the few sports with equal representation - both men's and women's teams compete at the highest levels!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🤾 Handball Positions</h2>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h4>Goalkeeper</h4>
+                    <p>Protects the goal, can use feet and body to block</p>
+                </div>
+                <div class="position-card">
+                    <h4>Left Wing</h4>
+                    <p>Plays on the left side, scores from wide angles</p>
+                </div>
+                <div class="position-card">
+                    <h4>Left Back</h4>
+                    <p>Playmaker on the left side of the court</p>
+                </div>
+                <div class="position-card">
+                    <h4>Center Back</h4>
+                    <p>Team captain, controls the game flow</p>
+                </div>
+                <div class="position-card">
+                    <h4>Right Back</h4>
+                    <p>Playmaker on the right side of the court</p>
+                </div>
+                <div class="position-card">
+                    <h4>Right Wing</h4>
+                    <p>Plays on the right side, scores from wide angles</p>
+                </div>
+                <div class="position-card">
+                    <h4>Pivot</h4>
+                    <p>Plays in the center, creates space and screens</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🤾 Essential Handball Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Handball Balls</h3>
+                    <p>Official size balls for training and competition play.</p>
+                    <a href="https://www.select-sport.com/handball-balls" class="btn btn-primary" target="_blank">Select Sport</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Handball Shoes</h3>
+                    <p>Specialized indoor court shoes with grip and support.</p>
+                    <a href="https://www.adidas.com/us/handball-shoes" class="btn btn-primary" target="_blank">Adidas Handball</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Handball Clothing</h3>
+                    <p>Jerseys, shorts, and team uniforms for players.</p>
+                    <a href="https://www.hummel.net/handball" class="btn btn-primary" target="_blank">Hummel</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Goalkeeper Gear</h3>
+                    <p>Protective equipment including helmets and padding.</p>
+                    <a href="https://www.kempahandball.com/goalkeeper-equipment" class="btn btn-primary" target="_blank">Kempa</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Cones, goals, and training aids for skill development.</p>
+                    <a href="https://www.erima.com/handball-training" class="btn btn-primary" target="_blank">Erima</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Handball Accessories</h3>
+                    <p>Bags, water bottles, and personal equipment.</p>
+                    <a href="https://www.amazon.com/s?k=handball+equipment" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major Handball Competitions</h2>
+            <div class="competitions-grid">
+                <div class="competition-card">
+                    <h3>Olympic Games</h3>
+                    <ul>
+                        <li>Pinnacle of handball competition</li>
+                        <li>Men's and women's tournaments</li>
+                        <li>12 teams in each tournament</li>
+                        <li>Every 4 years since 1936/1976</li>
+                    </ul>
+                </div>
+                <div class="competition-card">
+                    <h3>World Championships</h3>
+                    <ul>
+                        <li>IHF World Championship</li>
+                        <li>Held every 2 years</li>
+                        <li>24-32 teams participate</li>
+                        <li>Most prestigious annual event</li>
+                    </ul>
+                </div>
+                <div class="competition-card">
+                    <h3>European Championships</h3>
+                    <ul>
+                        <li>EHF European Championship</li>
+                        <li>Held every 2 years</li>
+                        <li>24 teams compete</li>
+                        <li>Highest level in Europe</li>
+                    </ul>
+                </div>
+                <div class="competition-card">
+                    <h3>Champions League</h3>
+                    <ul>
+                        <li>EHF Champions League</li>
+                        <li>Top European club competition</li>
+                        <li>16 teams in group stage</li>
+                        <li>Annual club championship</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Handball Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master Ball Control:</strong> Practice dribbling with both hands and develop a strong grip for accurate passing.</li>
+                <li><strong>Footwork Fundamentals:</strong> Quick steps, pivoting, and jumping are crucial for effective play.</li>
+                <li><strong>Shooting Accuracy:</strong> Practice shooting from different angles and distances to score consistently.</li>
+                <li><strong>Defensive Position:</strong> Stay low, keep arms wide, and anticipate opponent movements.</li>
+                <li><strong>Team Communication:</strong> Constant communication with teammates is essential for coordination.</li>
+                <li><strong>Physical Conditioning:</strong> Build endurance, agility, and explosive power for match performance.</li>
+                <li><strong>Game Strategy:</strong> Learn different tactics for offense and defense based on opponent strengths.</li>
+                <li><strong>Mental Toughness:</strong> Stay focused under pressure and maintain confidence during intense matches.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🤾 Handball Skills</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Passing</h3>
+                    <p>Chest pass, bounce pass, and overhead pass techniques.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Shooting</h3>
+                    <p>Jump shot, standing shot, and penalty throw.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Dribbling</h3>
+                    <p>Ball control while moving at high speeds.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Catching</h3>
+                    <p>Secure ball reception under pressure.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Blocking</h3>
+                    <p>Defensive techniques to stop attacks.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Feinting</h3>
+                    <p>Deceptive movements to confuse defenders.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Handball Rules Basics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Game Duration</h3>
+                    <p>Two 30-minute halves with 10-minute break.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Team Size</h3>
+                    <p>7 players on court (6 field players + 1 goalkeeper).</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Court Size</h3>
+                    <p>40m x 20m court with 3m x 2m goals.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Ball Handling</h3>
+                    <p>Hold ball maximum 3 seconds, dribble unlimited.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Goal Area</h3>
+                    <p>Only goalkeeper allowed in 6-meter area.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Scoring</h3>
+                    <p>Goals worth 1 point, highest score wins.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏫 Handball Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Youth Handball</h3>
+                    <p>Age group competitions from mini-handball up.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>School Programs</h3>
+                    <p>Educational handball programs in schools.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Club Handball</h3>
+                    <p>Local clubs for recreational and competitive play.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Professional Leagues</h3>
+                    <p>National leagues leading to international competition.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Handball Tactics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>6-0 Defense</h3>
+                    <p>Standard defensive formation with 6 players in line.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>5-1 Defense</h3>
+                    <p>One player forward, five in defensive line.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Fast Break</h3>
+                    <p>Quick transition from defense to attack.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Set Plays</h3>
+                    <p>Organized offensive patterns and combinations.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Zone Defense</h3>
+                    <p>Defensive coverage of areas rather than players.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Man-to-Man</h3>
+                    <p>Individual defensive assignments and coverage.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌍 Global Handball</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>European Powerhouses</h3>
+                    <p>Denmark, Germany, France, and Norway dominate.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Emerging Nations</h3>
+                    <p>Qatar, Egypt, and Brazil developing programs.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Women's Handball</h3>
+                    <p>Strong professional leagues and international competition.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Beach Handball</h3>
+                    <p>Outdoor variant gaining popularity worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Handball Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Cardiovascular Fitness</h3>
+                    <p>Excellent aerobic and anaerobic conditioning.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Coordination</h3>
+                    <p>Develops hand-eye coordination and agility.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Team Building</h3>
+                    <p>Builds teamwork and communication skills.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Decision Making</h3>
+                    <p>Improves quick thinking under pressure.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Social Benefits</h3>
+                    <p>Great way to meet people and build friendships.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Full Body Workout</h3>
+                    <p>Engages all muscle groups for complete fitness.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Handball</h2>
+            <p>Explore the rich history and technical aspects of handball with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Handball" class="btn btn-info" target="_blank">🌐 Handball on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Handball_at_the_Summer_Olympics" class="btn btn-info" target="_blank">🥇 Olympic Handball</a>
+                <a href="https://en.wikipedia.org/wiki/IHF_World_Men%27s_Handball_Championship" class="btn btn-info" target="_blank">🏆 World Championships</a>
+                <a href="https://en.wikipedia.org/wiki/EHF_Champions_League" class="btn btn-info" target="_blank">🏅 Champions League</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Play with passion and precision! 🤾</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Skateboarding Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #212121 0%, #616161 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #1976D2;
+            color: white;
+        }
+
+        .btn-info {
+            background: #FFC107;
+            color: #000;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #616161;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #616161, #9E9E9E);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #616161;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e3f2fd;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #616161;
+        }
+
+        .tips-list li:before {
+            content: "🛹 ";
+            margin-right: 0.5rem;
+        }
+
+        .trick-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .trick-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .trick-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #212121, #616161);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .style-card {
+            background: linear-gradient(45deg, #FF6B35, #FF9800);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .style-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .style-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .style-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛹 The Ultimate Skateboarding Hub</h1>
+            <p class="subtitle">Your complete guide to the art of skateboarding</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Skate Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🛹 Amazing Skateboarding Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Olympic Sport</h3>
+                    <p>Skateboarding made its Olympic debut at Tokyo 2020, with street and park competitions for both men and women!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>California Origins</h3>
+                    <p>Skateboarding was invented in California in the 1940s-50s by surfers who wanted to "surf" on land during flat wave days!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Global Community</h3>
+                    <p>There are over 85 million skateboarders worldwide, making it one of the most popular action sports globally!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Trick Evolution</h3>
+                    <p>The ollie, invented by Alan Gelfand in 1978, revolutionized skateboarding by allowing skaters to jump and perform aerial tricks!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Street Culture</h3>
+                    <p>Skateboarding shaped street culture, fashion, music, and art, influencing everything from punk rock to hip-hop!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Youngest Olympian</h3>
+                    <p>Kokona Hiraki from Japan won Olympic silver in skateboarding at just 12 years old, making her one of the youngest Olympic medalists ever!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🛹 Skateboarding Styles</h2>
+            <div class="styles-grid">
+                <div class="style-card">
+                    <h3>Street Skating</h3>
+                    <ul>
+                        <li>Urban obstacles and architecture</li>
+                        <li>Stairs, rails, and ledges</li>
+                        <li>Technical tricks and combos</li>
+                        <li>Most popular skateboarding style</li>
+                    </ul>
+                </div>
+                <div class="style-card">
+                    <h3>Vert Skating</h3>
+                    <ul>
+                        <li>Vertical ramps and halfpipes</li>
+                        <li>Aerial maneuvers and big air</li>
+                        <li>Speed and flow focused</li>
+                        <li>Classic 80s skateboarding</li>
+                    </ul>
+                </div>
+                <div class="style-card">
+                    <h3>Park Skating</h3>
+                    <ul>
+                        <li>Skate parks and bowls</li>
+                        <li>Combination of street and vert</li>
+                        <li>Flow and line creativity</li>
+                        <li>Olympic competition format</li>
+                    </ul>
+                </div>
+                <div class="style-card">
+                    <h3>Freestyle</h3>
+                    <ul>
+                        <li>Flat ground technical tricks</li>
+                        <li>Dance-like movements</li>
+                        <li>Creative expression</li>
+                        <li>Growing modern style</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🛹 Basic Skateboarding Tricks</h2>
+            <div class="trick-types">
+                <div class="trick-card">
+                    <h4>Ollie</h4>
+                    <p>Foundation trick - jumping with the board</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Kickflip</h4>
+                    <p>Board flips with front foot kick</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Heelflip</h4>
+                    <p>Board flips with heel kick</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Pop Shuvit</h4>
+                    <p>Board spins 180 degrees</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Frontside 180</h4>
+                    <p>Rider and board turn 180 degrees</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Backside 180</h4>
+                    <p>Reverse 180-degree turn</p>
+                </div>
+                <div class="trick-card">
+                    <h4>Manual</h4>
+                    <p>Balancing on back wheels</p>
+                </div>
+                <div class="trick-card">
+                    <h4>50-50 Grind</h4>
+                    <p>Sliding on both trucks</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🛹 Essential Skateboarding Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Complete Skateboards</h3>
+                    <p>Ready-to-ride boards for beginners and pros alike.</p>
+                    <a href="https://www.zumiez.com/skateboards" class="btn btn-primary" target="_blank">Zumiez</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Skateboard Decks</h3>
+                    <p>Professional decks from top brands and artists.</p>
+                    <a href="https://www.ccs.com/skateboard-decks" class="btn btn-primary" target="_blank">CCS</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Trucks & Wheels</h3>
+                    <p>High-quality trucks, wheels, and bearings for custom builds.</p>
+                    <a href="https://www.skatewarehouse.com/trucks-wheels" class="btn btn-primary" target="_blank">Skate Warehouse</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Helmets, pads, and safety equipment for all skill levels.</p>
+                    <a href="https://www.protec.com/skateboarding" class="btn btn-primary" target="_blank">Pro-Tec</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Skate Shoes</h3>
+                    <p>Durable shoes designed specifically for skateboarding.</p>
+                    <a href="https://www.vans.com/shop/shoes-classics-sk8-hi" class="btn btn-primary" target="_blank">Vans</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Skate Apparel</h3>
+                    <p>Clothing and accessories from skateboard brands.</p>
+                    <a href="https://www.amazon.com/s?k=skateboard+apparel" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Skateboarding Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Start with Basics:</strong> Master riding, pushing, and turning before attempting tricks.</li>
+                <li><strong>Learn the Ollie First:</strong> The ollie is the foundation for almost all skateboarding tricks.</li>
+                <li><strong>Practice Consistently:</strong> Regular practice, even for short sessions, builds muscle memory.</li>
+                <li><strong>Watch and Learn:</strong> Study other skaters, watch tutorials, and observe proper technique.</li>
+                <li><strong>Stay Relaxed:</strong> Tension makes tricks harder - stay loose and confident.</li>
+                <li><strong>Wear Protection:</strong> Helmets and pads prevent injuries, especially when learning.</li>
+                <li><strong>Find Your Stance:</strong> Determine if you're regular (left foot forward) or goofy (right foot forward).</li>
+                <li><strong>Be Patient:</strong> Skateboarding takes time to master - don't get discouraged by falls.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🛹 Skateboard Anatomy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Deck</h3>
+                    <p>Wooden board with grip tape on top surface.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Trucks</h3>
+                    <p>Metal axles that attach wheels to the deck.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Wheels</h3>
+                    <p>Polyurethane wheels in various sizes and hardness.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Bearings</h3>
+                    <p>Ball bearings that allow wheels to spin smoothly.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Grip Tape</h3>
+                    <p>Sandpaper-like surface for foot traction.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Hardware</h3>
+                    <p>Bolts and nuts that hold everything together.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏟️ Skateboarding Spots</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Skate Parks</h3>
+                    <p>Purpose-built facilities with ramps and obstacles.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Street Spots</h3>
+                    <p>Urban architecture like stairs, rails, and ledges.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Bowls</h3>
+                    <p>Curved concrete pools for transition skating.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Halfpipes</h3>
+                    <p>U-shaped ramps for vertical skateboarding.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Plaza</h3>
+                    <p>Street-style obstacles in controlled environment.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>DIY Spots</h3>
+                    <p>Skater-built obstacles and ramps.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Skateboarding Competitions</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Olympics</h3>
+                    <p>Street and park competitions every 4 years.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>X Games</h3>
+                    <p>Premier action sports competition.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Street League</h3>
+                    <p>Professional street skateboarding series.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Vans Park Series</h3>
+                    <p>Global park skateboarding competition.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Local Contests</h3>
+                    <p>Community competitions and amateur events.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Video Parts</h3>
+                    <p>Skateboarding film sections showcasing skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎨 Skateboarding Culture</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Art & Graphics</h3>
+                    <p>Deck art, street art, and creative expression.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Music</h3>
+                    <p>Punk, hip-hop, and alternative music connection.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Fashion</h3>
+                    <p>Streetwear, shoes, and skateboarding style.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Photography</h3>
+                    <p>Skate photography and videography.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Community</h3>
+                    <p>Inclusive culture welcoming all backgrounds.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Creativity</h3>
+                    <p>Individual expression and style development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Famous Skateboarders</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Tony Hawk</h3>
+                    <p>Legendary vert skater and video game icon.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Rodney Mullen</h3>
+                    <p>Freestyle pioneer and street skating innovator.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Nyjah Huston</h3>
+                    <p>Modern street skating superstar.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Daewon Song</h3>
+                    <p>Technical street skating master.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Leticia Bufoni</h3>
+                    <p>Leading female street skateboarder.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Sky Brown</h3>
+                    <p>Young Olympic medallist and park skater.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🚀 Learning Progression</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Beginner</h3>
+                    <p>Riding, pushing, turning, and basic balance.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Intermediate</h3>
+                    <p>Ollie, shuvit, kickflip, and basic grinds.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Advanced</h3>
+                    <p>Complex flip tricks, technical combinations.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Expert</h3>
+                    <p>Innovative tricks, video parts, competitions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Skateboarding Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Physical Fitness</h3>
+                    <p>Core strength, balance, and coordination.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Health</h3>
+                    <p>Stress relief, confidence, and focus.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Creativity</h3>
+                    <p>Individual expression and artistic development.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Problem Solving</h3>
+                    <p>Figuring out tricks and overcoming obstacles.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Community</h3>
+                    <p>Friendship and belonging in skate culture.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Perseverance</h3>
+                    <p>Learning to overcome failure and keep trying.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Skateboarding</h2>
+            <p>Explore the rich history and culture of skateboarding with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Skateboarding" class="btn btn-info" target="_blank">🌐 Skateboarding on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Skateboarding_at_the_Summer_Olympics" class="btn btn-info" target="_blank">🥇 Olympic Skateboarding</a>
+                <a href="https://en.wikipedia.org/wiki/Tony_Hawk" class="btn btn-info" target="_blank">🛹 Tony Hawk</a>
+                <a href="https://en.wikipedia.org/wiki/Ollie_(skateboarding)" class="btn btn-info" target="_blank">🚀 The Ollie</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Skate or die - keep pushing! 🛹</p>
+        </footer>
+    </div>
+</body>
+</html>

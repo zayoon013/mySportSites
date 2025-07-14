@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Cricket Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #FF5722;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #1976D2;
+            color: white;
+        }
+
+        .btn-info {
+            background: #FFC107;
+            color: #000;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #4CAF50;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e3f2fd;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .tips-list li:before {
+            content: "🏏 ";
+            margin-right: 0.5rem;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .position-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .position-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #2E7D32, #4CAF50);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .format-card {
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .format-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .format-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .format-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏏 The Ultimate Cricket Hub</h1>
+            <p class="subtitle">Your complete guide to the gentleman's game</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Cricket Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🏏 Amazing Cricket Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>World's Second Most Popular Sport</h3>
+                    <p>Cricket is the world's second most popular sport with over 2.5 billion fans globally, mainly in Commonwealth countries!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Longest Test Match</h3>
+                    <p>The longest Test match in history lasted 12 days between England and South Africa in 1939, ending in a draw due to rain!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Cricket World Cup</h3>
+                    <p>The Cricket World Cup is the third most-watched sporting event globally, with over 1.5 billion viewers in 2019!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Ancient Origins</h3>
+                    <p>Cricket originated in England in the 16th century and the first recorded match was played in 1697!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>The Ashes</h3>
+                    <p>The Ashes series between England and Australia is named after a satirical obituary saying English cricket had "died" in 1882!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Highest Individual Score</h3>
+                    <p>The highest individual score in Test cricket is 400 not out by Brian Lara of the West Indies in 2004!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏏 Cricket Positions</h2>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h4>Wicket-Keeper</h4>
+                    <p>Behind the stumps, catches and runs out batsmen</p>
+                </div>
+                <div class="position-card">
+                    <h4>Slip</h4>
+                    <p>Catches edges from batsmen, close to wicket-keeper</p>
+                </div>
+                <div class="position-card">
+                    <h4>Gully</h4>
+                    <p>Catches edges hit square, between slips and point</p>
+                </div>
+                <div class="position-card">
+                    <h4>Point</h4>
+                    <p>Covers square cuts and drives through covers</p>
+                </div>
+                <div class="position-card">
+                    <h4>Cover</h4>
+                    <p>Covers drives through the off-side</p>
+                </div>
+                <div class="position-card">
+                    <h4>Mid-Off</h4>
+                    <p>Straight drives on the off-side</p>
+                </div>
+                <div class="position-card">
+                    <h4>Mid-On</h4>
+                    <p>Straight drives on the leg-side</p>
+                </div>
+                <div class="position-card">
+                    <h4>Square Leg</h4>
+                    <p>Covers pulls and hooks square of the wicket</p>
+                </div>
+                <div class="position-card">
+                    <h4>Fine Leg</h4>
+                    <p>Covers glances and deflections behind square</p>
+                </div>
+                <div class="position-card">
+                    <h4>Third Man</h4>
+                    <p>Covers edges and cuts behind the wicket</p>
+                </div>
+                <div class="position-card">
+                    <h4>Long-On/Long-Off</h4>
+                    <p>Boundary fielders for straight hits</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🏏 Essential Cricket Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Cricket Bats</h3>
+                    <p>Willow bats for all levels, from junior to professional grade.</p>
+                    <a href="https://www.kookaburrasport.com/cricket-bats" class="btn btn-primary" target="_blank">Kookaburra Sport</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Helmets, pads, gloves, and body protection for batsmen and wicket-keepers.</p>
+                    <a href="https://www.graynichollscricket.com/protective-gear" class="btn btn-primary" target="_blank">Gray-Nicolls</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Cricket Balls</h3>
+                    <p>Leather balls for matches and practice balls for training.</p>
+                    <a href="https://www.dukes-cricket.com/cricket-balls" class="btn btn-primary" target="_blank">Dukes Cricket</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Cricket Clothing</h3>
+                    <p>Whites, colored clothing, and team uniforms for all formats.</p>
+                    <a href="https://www.newbalance.com/cricket" class="btn btn-primary" target="_blank">New Balance</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Cricket Shoes</h3>
+                    <p>Spiked shoes for grass pitches and rubber soles for indoor/artificial surfaces.</p>
+                    <a href="https://www.adidas.com/cricket-shoes" class="btn btn-primary" target="_blank">Adidas Cricket</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Stumps, cones, bowling machines, and practice nets.</p>
+                    <a href="https://www.amazon.com/s?k=cricket+training+equipment" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Cricket Formats</h2>
+            <div class="formats-grid">
+                <div class="format-card">
+                    <h3>Test Cricket</h3>
+                    <ul>
+                        <li>5 days, 2 innings per team</li>
+                        <li>No limit on overs per innings</li>
+                        <li>Traditional format since 1877</li>
+                        <li>Considered the purest form</li>
+                    </ul>
+                </div>
+                <div class="format-card">
+                    <h3>One Day International (ODI)</h3>
+                    <ul>
+                        <li>50 overs per team</li>
+                        <li>Single innings format</li>
+                        <li>World Cup every 4 years</li>
+                        <li>Colored clothing and white ball</li>
+                    </ul>
+                </div>
+                <div class="format-card">
+                    <h3>Twenty20 (T20)</h3>
+                    <ul>
+                        <li>20 overs per team</li>
+                        <li>Fast-paced, entertainment focused</li>
+                        <li>T20 World Cup every 2 years</li>
+                        <li>Most popular format globally</li>
+                    </ul>
+                </div>
+                <div class="format-card">
+                    <h3>The Hundred</h3>
+                    <ul>
+                        <li>100 balls per team</li>
+                        <li>New format introduced in 2021</li>
+                        <li>Played in England and Wales</li>
+                        <li>Designed for new audiences</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Cricket Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master the Basics:</strong> Perfect your grip, stance, and basic strokes before attempting advanced shots.</li>
+                <li><strong>Watch the Ball:</strong> Keep your eyes on the ball from the bowler's hand to the bat - crucial for timing.</li>
+                <li><strong>Footwork is Key:</strong> Move your feet to get into the right position for each delivery.</li>
+                <li><strong>Build Partnerships:</strong> In batting, communicate with your partner and run between wickets smartly.</li>
+                <li><strong>Bowl to Your Field:</strong> As a bowler, understand your field placement and bowl accordingly.</li>
+                <li><strong>Stay Fit:</strong> Cricket demands endurance - build stamina for long matches and quick reflexes.</li>
+                <li><strong>Mental Toughness:</strong> Stay focused and positive, especially during pressure situations.</li>
+                <li><strong>Practice Regularly:</strong> Consistent practice in nets and match situations improves all aspects of your game.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🏏 Batting Techniques</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Forward Defense</h3>
+                    <p>Basic defensive stroke with front foot forward.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Cover Drive</h3>
+                    <p>Elegant stroke through the covers off front foot.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pull Shot</h3>
+                    <p>Horizontal bat stroke for short-pitched deliveries.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Cut Shot</h3>
+                    <p>Square stroke for short, wide deliveries.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Sweep Shot</h3>
+                    <p>Horizontal stroke for spin bowling.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Leg Glance</h3>
+                    <p>Delicate stroke to deflect ball to leg side.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Bowling Types</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Fast Bowling</h3>
+                    <p>Pace bowling over 90 mph with swing and seam movement.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Medium Pace</h3>
+                    <p>Bowling at 75-90 mph focusing on accuracy and movement.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Spin Bowling</h3>
+                    <p>Slower bowling with finger or wrist spin for turn.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Off-Spin</h3>
+                    <p>Finger spin turning from off to leg stump.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Leg-Spin</h3>
+                    <p>Wrist spin turning from leg to off stump.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Swing Bowling</h3>
+                    <p>Movement in the air due to seam position and conditions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏫 Cricket Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Youth Cricket</h3>
+                    <p>Age-group cricket from under-8 to under-19 levels.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Club Cricket</h3>
+                    <p>Local league cricket for all skill levels.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>County Cricket</h3>
+                    <p>Professional domestic cricket in England.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>International Cricket</h3>
+                    <p>Test, ODI, and T20 cricket between nations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Women's Cricket</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Growing Popularity</h3>
+                    <p>Women's cricket experiencing rapid growth worldwide.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Professional Leagues</h3>
+                    <p>WBBL, The Hundred, and other professional competitions.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>International Cricket</h3>
+                    <p>Women's World Cup in both ODI and T20 formats.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Equal Opportunities</h3>
+                    <p>Increasing investment and equal prize money initiatives.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏏 Cricket Scoring</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Runs</h3>
+                    <p>1-6 runs per ball, boundaries worth 4 or 6 runs.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Extras</h3>
+                    <p>Wides, no-balls, byes, and leg-byes add to team total.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Dismissals</h3>
+                    <p>Bowled, caught, LBW, run out, stumped, and others.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Statistics</h3>
+                    <p>Batting average, strike rate, bowling average, economy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Cricket Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Physical Fitness</h3>
+                    <p>Improves stamina, coordination, and reflexes.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Skills</h3>
+                    <p>Develops concentration, strategy, and decision-making.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Team Building</h3>
+                    <p>Emphasizes teamwork, communication, and sportsmanship.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Social Connections</h3>
+                    <p>Builds friendships and community through club cricket.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Discipline</h3>
+                    <p>Teaches patience, respect, and following rules.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Lifelong Sport</h3>
+                    <p>Can be enjoyed at any age and skill level.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Cricket</h2>
+            <p>Explore the rich history and technical aspects of cricket with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Cricket" class="btn btn-info" target="_blank">🌐 Cricket on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Cricket_World_Cup" class="btn btn-info" target="_blank">🏆 Cricket World Cup</a>
+                <a href="https://en.wikipedia.org/wiki/The_Ashes" class="btn btn-info" target="_blank">🏏 The Ashes</a>
+                <a href="https://en.wikipedia.org/wiki/Test_cricket" class="btn btn-info" target="_blank">🎯 Test Cricket</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Play cricket, the gentleman's game! 🏏</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Boxing Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: #1e88e5;
+            color: white;
+        }
+
+        .btn-info {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #DC143C;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #DC143C, #FFD700);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #DC143C;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e3f2fd;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #DC143C;
+        }
+
+        .tips-list li:before {
+            content: "🥊 ";
+            margin-right: 0.5rem;
+        }
+
+        .weight-classes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .weight-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .weight-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .orgs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .org-card {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .org-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .org-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .org-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🥊 The Ultimate Boxing Hub</h1>
+            <p class="subtitle">Your complete guide to the sweet science</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Boxing Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🥊 Amazing Boxing Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Ancient Origins</h3>
+                    <p>Boxing dates back to 3000 BC in Egypt and was included in the ancient Olympic Games in 688 BC!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Muhammad Ali's Speed</h3>
+                    <p>Muhammad Ali could throw a jab in 0.04 seconds and his punches were so fast they couldn't be seen on normal film!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Heavyweight Power</h3>
+                    <p>A heavyweight boxer's punch can generate up to 1,800 pounds of force per square inch - enough to break concrete!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World's Longest Fight</h3>
+                    <p>The longest boxing match in history lasted 110 rounds and went for 7 hours and 19 minutes in 1893!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Olympic Boxing</h3>
+                    <p>Boxing has been in every modern Olympic Games except 1912, and amateur boxing uses different rules than professional boxing!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Brain Protection</h3>
+                    <p>The human brain can sustain up to 50 G-forces, but a boxer's punch can generate 58 G-forces of acceleration!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥊 Professional Weight Classes</h2>
+            <div class="weight-classes">
+                <div class="weight-card">
+                    <h4>Heavyweight</h4>
+                    <p>Over 200 lbs (90.7 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Cruiserweight</h4>
+                    <p>Up to 200 lbs (90.7 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Light Heavyweight</h4>
+                    <p>Up to 175 lbs (79.4 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Super Middleweight</h4>
+                    <p>Up to 168 lbs (76.2 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Middleweight</h4>
+                    <p>Up to 160 lbs (72.6 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Welterweight</h4>
+                    <p>Up to 147 lbs (66.7 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Lightweight</h4>
+                    <p>Up to 135 lbs (61.2 kg)</p>
+                </div>
+                <div class="weight-card">
+                    <h4>Featherweight</h4>
+                    <p>Up to 126 lbs (57.2 kg)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🥊 Essential Boxing Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Boxing Gloves</h3>
+                    <p>Training gloves, sparring gloves, and competition gloves for all levels.</p>
+                    <a href="https://www.titleboxing.com/boxing-gloves" class="btn btn-primary" target="_blank">Title Boxing</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Heavy Bags</h3>
+                    <p>Heavy bags, speed bags, and double-end bags for training.</p>
+                    <a href="https://www.everlast.com/heavy-bags" class="btn btn-primary" target="_blank">Everlast</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hand Wraps</h3>
+                    <p>Cotton and elastic hand wraps for wrist and knuckle protection.</p>
+                    <a href="https://www.ringside.com/hand-wraps" class="btn btn-primary" target="_blank">Ringside</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Headgear, mouthguards, and body protectors for sparring.</p>
+                    <a href="https://www.cleto-reyes.com/protective-gear" class="btn btn-primary" target="_blank">Cleto Reyes</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Boxing Shoes</h3>
+                    <p>Lightweight boxing shoes for footwork and ring mobility.</p>
+                    <a href="https://www.adidas.com/us/boxing-shoes" class="btn btn-primary" target="_blank">Adidas Boxing</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Focus mitts, medicine balls, and conditioning tools.</p>
+                    <a href="https://www.amazon.com/s?k=boxing+training+equipment" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major Boxing Organizations</h2>
+            <div class="orgs-grid">
+                <div class="org-card">
+                    <h3>World Boxing Council (WBC)</h3>
+                    <ul>
+                        <li>Founded in 1963</li>
+                        <li>Green championship belts</li>
+                        <li>Based in Mexico City</li>
+                        <li>Most recognized organization</li>
+                    </ul>
+                </div>
+                <div class="org-card">
+                    <h3>World Boxing Association (WBA)</h3>
+                    <ul>
+                        <li>Founded in 1921</li>
+                        <li>Oldest boxing organization</li>
+                        <li>Based in Venezuela</li>
+                        <li>Super and Regular champions</li>
+                    </ul>
+                </div>
+                <div class="org-card">
+                    <h3>International Boxing Federation (IBF)</h3>
+                    <ul>
+                        <li>Founded in 1983</li>
+                        <li>Based in New Jersey, USA</li>
+                        <li>Strict mandatory defense rules</li>
+                        <li>Red championship belts</li>
+                    </ul>
+                </div>
+                <div class="org-card">
+                    <h3>World Boxing Organization (WBO)</h3>
+                    <ul>
+                        <li>Founded in 1988</li>
+                        <li>Based in Puerto Rico</li>
+                        <li>Newest major organization</li>
+                        <li>Growing international recognition</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Boxing Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master the Stance:</strong> Keep feet shoulder-width apart, lead foot forward, and stay balanced on the balls of your feet.</li>
+                <li><strong>Guard Up Always:</strong> Keep your hands up to protect your face, elbows tucked to protect your body.</li>
+                <li><strong>Footwork Fundamentals:</strong> Stay light on your feet, pivot rather than cross-step, and maintain proper distance.</li>
+                <li><strong>Breathing Control:</strong> Exhale with each punch, breathe through your nose, and stay relaxed between exchanges.</li>
+                <li><strong>Punch Combinations:</strong> Practice 2-3 punch combinations rather than single shots for more effective offense.</li>
+                <li><strong>Head Movement:</strong> Slip, duck, and weave to avoid punches - don't rely solely on blocking.</li>
+                <li><strong>Condition Your Body:</strong> Build core strength, cardiovascular endurance, and hand/wrist conditioning.</li>
+                <li><strong>Mental Toughness:</strong> Stay calm under pressure, visualize success, and maintain confidence in the ring.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🥊 Boxing Punch Types</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Jab</h3>
+                    <p>Quick, straight punch with lead hand for distance and setup.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Cross</h3>
+                    <p>Straight power punch with rear hand, follows the jab.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Hook</h3>
+                    <p>Circular punch to the side of opponent's head or body.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Uppercut</h3>
+                    <p>Upward punch targeting chin or solar plexus.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Overhand</h3>
+                    <p>Looping punch thrown over opponent's guard.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Body Shot</h3>
+                    <p>Punches targeting ribs, liver, and solar plexus.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Boxing Training Basics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Bag Work</h3>
+                    <p>Heavy bag, speed bag, and double-end bag training.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pad Work</h3>
+                    <p>Focus mitts and thai pads for timing and accuracy.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Sparring</h3>
+                    <p>Controlled practice fighting with protective gear.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Conditioning</h3>
+                    <p>Cardio, strength training, and boxing-specific drills.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Shadowboxing</h3>
+                    <p>Practice technique, footwork, and combinations alone.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Jump Rope</h3>
+                    <p>Improve footwork, timing, and cardiovascular fitness.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏫 Boxing Styles</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Out-Fighter</h3>
+                    <p>Long reach, mobile, fights from outside using jabs.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Slugger</h3>
+                    <p>Power puncher who relies on knockout shots.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Boxer-Puncher</h3>
+                    <p>Combines technical skill with knockout power.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pressure Fighter</h3>
+                    <p>Applies constant pressure and works inside.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Counter Puncher</h3>
+                    <p>Waits for opponent to attack, then counters.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Southpaw</h3>
+                    <p>Left-handed stance creates different angles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Amateur vs Professional</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Amateur Boxing</h3>
+                    <p>Olympics, point scoring, headgear required.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Professional Boxing</h3>
+                    <p>Paid fights, no headgear, knockout emphasis.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Round Length</h3>
+                    <p>Amateur: 3 rounds x 3 minutes, Pro: up to 12 rounds.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Scoring</h3>
+                    <p>Amateur: point system, Pro: 10-point must system.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Boxing Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Full Body Workout</h3>
+                    <p>Combines cardio, strength, and coordination training.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Self-Defense</h3>
+                    <p>Practical skills for personal protection.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Toughness</h3>
+                    <p>Builds confidence, discipline, and resilience.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Stress Relief</h3>
+                    <p>Great outlet for releasing tension and frustration.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Hand-Eye Coordination</h3>
+                    <p>Improves reflexes and reaction time.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Core Strength</h3>
+                    <p>Develops powerful core muscles and stability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Boxing</h2>
+            <p>Explore the rich history and technical aspects of boxing with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Boxing" class="btn btn-info" target="_blank">🌐 Boxing on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Muhammad_Ali" class="btn btn-info" target="_blank">🥊 Muhammad Ali</a>
+                <a href="https://en.wikipedia.org/wiki/World_Boxing_Council" class="btn btn-info" target="_blank">🏆 World Boxing Council</a>
+                <a href="https://en.wikipedia.org/wiki/Boxing_at_the_Summer_Olympics" class="btn btn-info" target="_blank">🥇 Olympic Boxing</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Float like a butterfly, sting like a bee! 🥊</p>
+        </footer>
+    </div>
+</body>
+</html>
