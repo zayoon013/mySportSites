@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Bowling Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4a148c 0%, #7b1fa2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #9c27b0;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-info {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #9c27b0;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #9c27b0;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #fce4ec;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .tips-list li:before {
+            content: "🎳 ";
+            margin-right: 0.5rem;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .type-card {
+            background: #f3e5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .type-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #4a148c, #7b1fa2);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .scoring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .scoring-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .scoring-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .scoring-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scoring-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎳 The Ultimate Bowling Hub</h1>
+            <p class="subtitle">Your complete guide to strikes, spares, and ten-pin perfection</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Bowling Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🎳 Amazing Bowling Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Ancient Origins</h3>
+                    <p>Bowling dates back over 7,000 years! Ancient Egyptians played a similar game, and artifacts were found in a child's grave from 5200 BCE.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Perfect Game Glory</h3>
+                    <p>A perfect game (300 score) requires 12 consecutive strikes. The odds of a casual bowler achieving this are roughly 1 in 11,500!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World's Largest Sport</h3>
+                    <p>Bowling is the world's largest participation sport with over 95 million players across more than 90 countries!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Presidents Bowl Too</h3>
+                    <p>The White House had a bowling alley installed in 1947, and presidents from Truman to Obama have enjoyed bowling there!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Pin Power</h3>
+                    <p>Bowling pins are designed to weigh between 3 pounds 6 ounces and 3 pounds 10 ounces, and they're made of hard maple wood!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Speed Matters</h3>
+                    <p>The average bowling ball speed is 16-17 mph, but pros can throw up to 22 mph while maintaining accuracy!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎳 Types of Bowling</h2>
+            <div class="types-grid">
+                <div class="type-card">
+                    <h4>Ten-Pin Bowling</h4>
+                    <p>Most common form with 10 pins and large bowling balls</p>
+                </div>
+                <div class="type-card">
+                    <h4>Nine-Pin Bowling</h4>
+                    <p>Popular in Europe, uses 9 pins in diamond formation</p>
+                </div>
+                <div class="type-card">
+                    <h4>Five-Pin Bowling</h4>
+                    <p>Canadian variant with smaller balls and 5 pins</p>
+                </div>
+                <div class="type-card">
+                    <h4>Candlepin Bowling</h4>
+                    <p>New England style with thin pins and small balls</p>
+                </div>
+                <div class="type-card">
+                    <h4>Duckpin Bowling</h4>
+                    <p>Shorter, wider pins with smaller balls</p>
+                </div>
+                <div class="type-card">
+                    <h4>Cosmic Bowling</h4>
+                    <p>Bowling with black lights, music, and special effects</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🎳 Essential Bowling Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Bowling Balls</h3>
+                    <p>Custom-fitted balls with proper weight and finger holes for your style.</p>
+                    <a href="https://www.bowlingball.com/" class="btn btn-primary" target="_blank">BowlingBall.com</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Bowling Shoes</h3>
+                    <p>Specialized shoes with sliding sole for proper approach and release.</p>
+                    <a href="https://www.bowlersparadise.com/bowling-shoes" class="btn btn-primary" target="_blank">Bowlers Paradise</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Bowling Bags</h3>
+                    <p>Protective bags to transport your ball and accessories safely.</p>
+                    <a href="https://www.stormbowling.com/bags" class="btn btn-primary" target="_blank">Storm Bowling</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Bowling Accessories</h3>
+                    <p>Wrist supports, rosin bags, and towels to enhance your game.</p>
+                    <a href="https://www.bowlingindex.com/accessories" class="btn btn-primary" target="_blank">Bowling Index</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Bowling Apparel</h3>
+                    <p>Comfortable clothing designed for bowling movement and style.</p>
+                    <a href="https://www.bowlershop.com/apparel" class="btn btn-primary" target="_blank">Bowler Shop</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Maintenance Supplies</h3>
+                    <p>Ball cleaners, polishes, and tools to keep equipment in top condition.</p>
+                    <a href="https://www.amazon.com/s?k=bowling+maintenance" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📊 Bowling Scoring System</h2>
+            <div class="scoring-grid">
+                <div class="scoring-card">
+                    <h3>Basic Scoring</h3>
+                    <ul>
+                        <li>Strike (X): 10 + next 2 rolls</li>
+                        <li>Spare (/): 10 + next 1 roll</li>
+                        <li>Open frame: Total pins knocked down</li>
+                        <li>Maximum score: 300 (12 strikes)</li>
+                    </ul>
+                </div>
+                <div class="scoring-card">
+                    <h3>Frame Structure</h3>
+                    <ul>
+                        <li>Frames 1-9: Up to 2 rolls each</li>
+                        <li>Frame 10: Up to 3 rolls possible</li>
+                        <li>Strike = frame complete</li>
+                        <li>Spare = use both rolls</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Bowling Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Consistent Approach:</strong> Develop a repeatable 4 or 5-step approach to the foul line for consistency.</li>
+                <li><strong>Proper Ball Fit:</strong> Ensure your ball fits properly - thumbhole snug but not tight, finger holes comfortable.</li>
+                <li><strong>Focus on Form:</strong> Keep your shoulders square, swing straight, and follow through toward your target.</li>
+                <li><strong>Target the Arrows:</strong> Aim for the arrows on the lane, not the pins - they're closer and easier to hit consistently.</li>
+                <li><strong>Oil Pattern Awareness:</strong> Learn to read lane conditions and adjust your ball speed and position accordingly.</li>
+                <li><strong>Spare Shooting:</strong> Master your spare shooting - it's often the difference between good and great scores.</li>
+                <li><strong>Mental Game:</strong> Stay relaxed and focused, don't let bad frames affect your confidence.</li>
+                <li><strong>Practice Regularly:</strong> Consistent practice builds muscle memory and improves your average over time.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Bowling Techniques</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Straight Ball</h3>
+                    <p>Basic technique for beginners - ball travels straight down the lane.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Hook Ball</h3>
+                    <p>Advanced technique where ball curves into the pins for better pin action.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Curve Ball</h3>
+                    <p>Ball curves gradually throughout its path down the lane.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Backup Ball</h3>
+                    <p>Ball curves in the opposite direction of a hook ball.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Professional Bowling</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>PBA Tour</h3>
+                    <p>Professional Bowlers Association - premier men's bowling tour.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>PWBA</h3>
+                    <p>Professional Women's Bowling Association tours and championships.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>World Championships</h3>
+                    <p>International competition featuring the world's best bowlers.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Youth Programs</h3>
+                    <p>Junior bowling leagues and scholarship opportunities.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎳 Bowling Lane Specifications</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Lane Dimensions</h3>
+                    <p>60 feet long from foul line to head pin, 42 inches wide.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pin Setup</h3>
+                    <p>10 pins arranged in triangular formation, 12 inches apart.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Lane Oil</h3>
+                    <p>Protective coating that affects ball motion and hook potential.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Approach Area</h3>
+                    <p>15-foot area before the foul line where bowlers take their steps.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Bowling Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Physical Exercise</h3>
+                    <p>Burns calories, improves balance, and strengthens core muscles.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Focus</h3>
+                    <p>Develops concentration, strategy, and pressure management skills.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Social Activity</h3>
+                    <p>Great way to meet people and enjoy friendly competition.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>All Ages</h3>
+                    <p>Sport that can be enjoyed by people of all ages and abilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Bowling</h2>
+            <p>Explore the rich history and technical aspects of bowling with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Bowling" class="btn btn-info" target="_blank">🌐 Bowling on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Ten-pin_bowling" class="btn btn-info" target="_blank">🎳 Ten-Pin Bowling</a>
+                <a href="https://en.wikipedia.org/wiki/Professional_Bowlers_Association" class="btn btn-info" target="_blank">🏆 PBA</a>
+                <a href="https://en.wikipedia.org/wiki/Perfect_game_(bowling)" class="btn btn-info" target="_blank">⚡ Perfect Game</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Strike up some fun! 🎳</p>
+        </footer>
+    </div>
+</body>
+</html>

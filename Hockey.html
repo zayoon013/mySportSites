@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Hockey Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #dc143c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #1e88e5;
+            color: white;
+        }
+
+        .btn-info {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #dc143c;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #dc143c, #ff6b35);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #dc143c;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e3f2fd;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #dc143c;
+        }
+
+        .tips-list li:before {
+            content: "🏒 ";
+            margin-right: 0.5rem;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .position-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .position-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .leagues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .league-card {
+            background: linear-gradient(45deg, #dc143c, #ff6b35);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .league-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .league-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .league-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏒 The Ultimate Hockey Hub</h1>
+            <p class="subtitle">Your complete guide to the fastest sport on ice</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Hockey Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🏒 Amazing Hockey Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Fastest Team Sport</h3>
+                    <p>Hockey is the fastest team sport in the world, with players reaching speeds of 25+ mph and pucks traveling over 100 mph!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Stanley Cup History</h3>
+                    <p>The Stanley Cup is the oldest professional sports trophy in North America, first awarded in 1893 and weighs 34.5 pounds!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Canada's National Sport</h3>
+                    <p>Ice hockey is Canada's national winter sport, with over 700,000 registered players across the country!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Original Six Era</h3>
+                    <p>From 1942-1967, the NHL had only 6 teams: Boston, Montreal, Toronto, Detroit, Chicago, and New York Rangers!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Zamboni Innovation</h3>
+                    <p>The Zamboni ice resurfacing machine was invented in 1949 and revolutionized ice maintenance worldwide!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Great One's Records</h3>
+                    <p>Wayne Gretzky holds 61 NHL records, including most career goals (894) and assists (1,963) - his assists alone would rank 2nd all-time in points!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏒 Hockey Positions</h2>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h4>Center</h4>
+                    <p>Takes face-offs, plays both offense and defense</p>
+                </div>
+                <div class="position-card">
+                    <h4>Left Wing</h4>
+                    <p>Plays left side, creates scoring chances</p>
+                </div>
+                <div class="position-card">
+                    <h4>Right Wing</h4>
+                    <p>Plays right side, supports offensive attacks</p>
+                </div>
+                <div class="position-card">
+                    <h4>Left Defense</h4>
+                    <p>Protects left side of defensive zone</p>
+                </div>
+                <div class="position-card">
+                    <h4>Right Defense</h4>
+                    <p>Protects right side of defensive zone</p>
+                </div>
+                <div class="position-card">
+                    <h4>Goaltender</h4>
+                    <p>Last line of defense, protects the net</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🏒 Essential Hockey Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Hockey Sticks</h3>
+                    <p>Composite and wood sticks for all positions and skill levels.</p>
+                    <a href="https://www.hockeymonkey.com/sticks" class="btn btn-primary" target="_blank">Hockey Monkey</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Helmets, pads, gloves, and protective equipment for safety.</p>
+                    <a href="https://www.purehockey.com/protective" class="btn btn-primary" target="_blank">Pure Hockey</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hockey Skates</h3>
+                    <p>Ice skates designed for hockey performance and comfort.</p>
+                    <a href="https://www.icewarehouse.com/skates" class="btn btn-primary" target="_blank">Ice Warehouse</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hockey Pucks</h3>
+                    <p>Official game pucks and practice pucks for training.</p>
+                    <a href="https://www.hockeyshot.com/pucks" class="btn btn-primary" target="_blank">HockeyShot</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hockey Jerseys</h3>
+                    <p>Official team jerseys, practice jerseys, and fan gear.</p>
+                    <a href="https://www.fanatics.com/nhl" class="btn btn-primary" target="_blank">Fanatics</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Shooting targets, passing trainers, and skill development tools.</p>
+                    <a href="https://www.hockeytraining.com" class="btn btn-primary" target="_blank">Hockey Training</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major Hockey Leagues</h2>
+            <div class="leagues-grid">
+                <div class="league-card">
+                    <h3>National Hockey League (NHL)</h3>
+                    <ul>
+                        <li>32 teams across North America</li>
+                        <li>Founded in 1917</li>
+                        <li>Stanley Cup Championship</li>
+                        <li>82-game regular season</li>
+                    </ul>
+                </div>
+                <div class="league-card">
+                    <h3>American Hockey League (AHL)</h3>
+                    <ul>
+                        <li>NHL's primary development league</li>
+                        <li>31 teams in North America</li>
+                        <li>Calder Cup Championship</li>
+                        <li>76-game regular season</li>
+                    </ul>
+                </div>
+                <div class="league-card">
+                    <h3>International Ice Hockey</h3>
+                    <ul>
+                        <li>Olympics every 4 years</li>
+                        <li>World Championships annually</li>
+                        <li>World Junior Championships</li>
+                        <li>Various European leagues</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Hockey Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master Skating First:</strong> All hockey skills depend on strong skating fundamentals - forward, backward, and turning.</li>
+                <li><strong>Keep Your Head Up:</strong> Maintain awareness of the ice while handling the puck to avoid hits and see opportunities.</li>
+                <li><strong>Practice Stick Handling:</strong> Develop soft hands and quick stick work for better puck control in tight spaces.</li>
+                <li><strong>Shooting Accuracy:</strong> Practice shooting for corners and developing a quick release over pure power.</li>
+                <li><strong>Physical Conditioning:</strong> Build explosive power and endurance for short, intense shifts.</li>
+                <li><strong>Team Communication:</strong> Call plays, warn teammates of pressure, and communicate constantly on ice.</li>
+                <li><strong>Positioning:</strong> Learn proper positioning for your role - offense, defense, and neutral zone play.</li>
+                <li><strong>Mental Toughness:</strong> Develop resilience to handle physical play and high-pressure situations.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🏒 Hockey Skills Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Skating</h3>
+                    <p>Forward/backward skating, crossovers, stops, and turns.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Puck Handling</h3>
+                    <p>Stick handling, dekes, protection, and quick hands.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Shooting</h3>
+                    <p>Wrist shot, slap shot, snap shot, and backhand.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Passing</h3>
+                    <p>Forehand, backhand, saucer pass, and tape-to-tape.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Body Checking</h3>
+                    <p>Legal body contact, positioning, and defensive play.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Goaltending</h3>
+                    <p>Stance, angle play, rebound control, and positioning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Hockey Game Basics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Game Duration</h3>
+                    <p>Three 20-minute periods with 15-minute intermissions.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Ice Rink Size</h3>
+                    <p>200 feet long, 85 feet wide with rounded corners.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Scoring</h3>
+                    <p>1 point for goal, 1 point for assist (max 2 assists per goal).</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Penalties</h3>
+                    <p>Minor (2 min), major (5 min), misconduct (10 min).</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Offside Rule</h3>
+                    <p>Player cannot enter attacking zone before the puck.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Icing</h3>
+                    <p>Puck shot from behind center line past goal line.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏫 Youth Hockey Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Learn to Play</h3>
+                    <p>Introduction programs for beginners ages 4-9.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>House Leagues</h3>
+                    <p>Recreational hockey for skill development and fun.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Travel Teams</h3>
+                    <p>Competitive hockey with tournaments and leagues.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Junior Hockey</h3>
+                    <p>High-level development for college and pro prospects.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Women's Hockey</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Growing Sport</h3>
+                    <p>Fastest growing segment of hockey participation.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>College Hockey</h3>
+                    <p>NCAA Division I, II, and III programs available.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Professional Leagues</h3>
+                    <p>PWHL and international professional opportunities.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Olympic Hockey</h3>
+                    <p>Women's hockey has been Olympic sport since 1998.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥅 Goaltending Specifics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Butterfly Style</h3>
+                    <p>Modern goaltending technique with pads down.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Angle Play</h3>
+                    <p>Positioning to cut down shooting angles.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Rebound Control</h3>
+                    <p>Directing rebounds away from danger areas.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Game</h3>
+                    <p>Concentration, confidence, and short memory for goals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏒 Hockey Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Full Body Workout</h3>
+                    <p>Combines cardio, strength, and agility training.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Toughness</h3>
+                    <p>Develops quick decision-making and resilience.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Team Building</h3>
+                    <p>Emphasizes communication and working together.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Lifelong Sport</h3>
+                    <p>Can be played recreationally at any age.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Hockey</h2>
+            <p>Explore the rich history and technical aspects of hockey with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Ice_hockey" class="btn btn-info" target="_blank">🌐 Ice Hockey on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/National_Hockey_League" class="btn btn-info" target="_blank">🏆 National Hockey League</a>
+                <a href="https://en.wikipedia.org/wiki/Stanley_Cup" class="btn btn-info" target="_blank">🏆 Stanley Cup</a>
+                <a href="https://en.wikipedia.org/wiki/Wayne_Gretzky" class="btn btn-info" target="_blank">🌟 Wayne Gretzky</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Skate hard, play harder! 🏒</p>
+        </footer>
+    </div>
+</body>
+</html>

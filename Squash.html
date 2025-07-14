@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Squash Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #e67e22;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-info {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #e67e22, #f39c12);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #e67e22;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #fff3e0;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .tips-list li:before {
+            content: "🎾 ";
+            margin-right: 0.5rem;
+        }
+
+        .shots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .shot-card {
+            background: #fafafa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .shot-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .court-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .court-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .court-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .court-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .court-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎾 The Ultimate Squash Hub</h1>
+            <p class="subtitle">Your complete guide to the fast-paced world of squash</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Squash Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🚀 Amazing Squash Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Prison Origins</h3>
+                    <p>Squash was invented around 1830 at Harrow School in England when students discovered hitting a punctured racquets ball against a wall was more fun!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Olympic Bid</h3>
+                    <p>Despite multiple attempts, squash has never been included in the Olympics, though it came close for the 2012 and 2016 games!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Lightning Fast</h3>
+                    <p>The squash ball can reach speeds of up to 176 mph (283 km/h) when hit by professional players!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Calorie Crusher</h3>
+                    <p>Squash burns more calories per minute than almost any other sport - up to 517 calories in 30 minutes!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Glass Courts</h3>
+                    <p>Modern tournament courts often use glass walls to allow spectators to watch from all angles, creating an incredible viewing experience!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Global Reach</h3>
+                    <p>Squash is played in over 185 countries worldwide, making it one of the most internationally popular racquet sports!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎾 Essential Squash Shots</h2>
+            <div class="shots-grid">
+                <div class="shot-card">
+                    <h4>Drive</h4>
+                    <p>Straight, powerful shot along the side walls</p>
+                </div>
+                <div class="shot-card">
+                    <h4>Drop Shot</h4>
+                    <p>Soft shot that barely clears the tin</p>
+                </div>
+                <div class="shot-card">
+                    <h4>Boast</h4>
+                    <p>Shot that hits the side wall first</p>
+                </div>
+                <div class="shot-card">
+                    <h4>Lob</h4>
+                    <p>High, arcing shot to the back of the court</p>
+                </div>
+                <div class="shot-card">
+                    <h4>Kill Shot</h4>
+                    <p>Low, hard shot aimed at the tin</p>
+                </div>
+                <div class="shot-card">
+                    <h4>Cross Court</h4>
+                    <p>Diagonal shot across the court</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🎾 Essential Squash Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Squash Racquet</h3>
+                    <p>Lightweight racquet with specific string tension for power and control.</p>
+                    <a href="https://www.squashsource.com/racquets" class="btn btn-primary" target="_blank">Squash Source</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Squash Balls</h3>
+                    <p>Different speed balls for various skill levels - from beginner to professional.</p>
+                    <a href="https://www.dunlopsport.com/squash/balls" class="btn btn-primary" target="_blank">Dunlop Sport</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Court Shoes</h3>
+                    <p>Non-marking shoes with excellent grip for quick direction changes.</p>
+                    <a href="https://www.squashgear.com/shoes" class="btn btn-primary" target="_blank">Squash Gear</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Eyewear</h3>
+                    <p>Safety glasses to protect against fast-moving balls and racquet accidents.</p>
+                    <a href="https://www.squash.com/protective-eyewear" class="btn btn-primary" target="_blank">Squash.com</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Squash Clothing</h3>
+                    <p>Breathable, moisture-wicking apparel for comfort during intense play.</p>
+                    <a href="https://www.pdhsports.com/squash" class="btn btn-primary" target="_blank">PDH Sports</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Accessories</h3>
+                    <p>Grips, strings, bags, and other essential squash accessories.</p>
+                    <a href="https://www.amazon.com/s?k=squash+accessories" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏟️ Squash Court Basics</h2>
+            <div class="court-grid">
+                <div class="court-card">
+                    <h3>Court Dimensions</h3>
+                    <ul>
+                        <li>Length: 32 feet (9.75m)</li>
+                        <li>Width: 21 feet (6.4m)</li>
+                        <li>Height: 15 feet (4.57m)</li>
+                        <li>Playing surface: Wood or synthetic</li>
+                    </ul>
+                </div>
+                <div class="court-card">
+                    <h3>Court Lines</h3>
+                    <ul>
+                        <li>Service line: 1.83m from back wall</li>
+                        <li>Short line: Middle of the court</li>
+                        <li>Tin: 48cm high front wall metal</li>
+                        <li>Out line: 4.57m high on front wall</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Squash Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master the T:</strong> Always return to the center of the court (the T) after each shot to maintain court control.</li>
+                <li><strong>Watch the Ball:</strong> Keep your eyes on the ball at all times, especially when it's coming off the back wall.</li>
+                <li><strong>Use the Walls:</strong> Learn to use all four walls effectively - side walls, back wall, and front wall angles.</li>
+                <li><strong>Vary Your Shots:</strong> Mix up hard drives, soft drops, and deceptive boasts to keep your opponent guessing.</li>
+                <li><strong>Fitness is Key:</strong> Squash demands exceptional cardiovascular fitness and quick reflexes.</li>
+                <li><strong>Racquet Control:</strong> Keep your racquet up and ready between shots for quicker reaction times.</li>
+                <li><strong>Ball Temperature:</strong> Warm up the ball properly before play - cold balls don't bounce well.</li>
+                <li><strong>Court Positioning:</strong> Stay behind your opponent when they're hitting to avoid interference.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Squash Strategies</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Dominate the T</h3>
+                    <p>Control the center of the court to limit your opponent's options.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Length Game</h3>
+                    <p>Keep the ball deep to move your opponent to the back corners.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Deception</h3>
+                    <p>Use body language and racquet preparation to mislead your opponent.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pressure Points</h3>
+                    <p>Force your opponent into difficult positions and capitalize on weak returns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major Squash Tournaments</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>World Championships</h3>
+                    <p>The ultimate individual title in professional squash.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>British Open</h3>
+                    <p>Historic tournament often called the "Wimbledon of Squash".</p>
+                </div>
+                <div class="gear-item">
+                    <h3>U.S. Open</h3>
+                    <p>Premier North American squash championship.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Commonwealth Games</h3>
+                    <p>Multi-sport event where squash is a medal sport.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Squash Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Cardiovascular Health</h3>
+                    <p>Excellent heart workout with constant movement and intensity.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Agility</h3>
+                    <p>Improves reaction time, decision-making, and strategic thinking.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Full Body Workout</h3>
+                    <p>Engages legs, core, arms, and improves overall coordination.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Stress Relief</h3>
+                    <p>Intense physical activity provides excellent stress release.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎾 Ball Speed Guide</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Blue Ball</h3>
+                    <p>Fastest ball - perfect for beginners and casual players.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Red Ball</h3>
+                    <p>Medium speed - good for intermediate players developing skills.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Yellow Ball</h3>
+                    <p>Slow speed - standard for competitive and advanced players.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Double Yellow</h3>
+                    <p>Extra slow - used in professional tournaments worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Squash</h2>
+            <p>Explore the rich history and technical aspects of squash with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Squash_(sport)" class="btn btn-info" target="_blank">🌐 Squash on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Squash_court" class="btn btn-info" target="_blank">🏟️ Squash Court</a>
+                <a href="https://en.wikipedia.org/wiki/World_Squash_Championships" class="btn btn-info" target="_blank">🏆 World Championships</a>
+                <a href="https://en.wikipedia.org/wiki/Squash_at_the_Commonwealth_Games" class="btn btn-info" target="_blank">🥇 Commonwealth Games</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Squash - the ultimate court sport! 🎾</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Baseball Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-info {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #dc3545;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #dc3545, #c82333);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #dc3545;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #fff5f5;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .tips-list li:before {
+            content: "⚾ ";
+            margin-right: 0.5rem;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .position-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .position-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .leagues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .league-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .league-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .league-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .league-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚾ The Ultimate Baseball Hub</h1>
+            <p class="subtitle">Your complete guide to America's favorite pastime</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Baseball Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>⚾ Amazing Baseball Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>America's Pastime</h3>
+                    <p>Baseball has been called "America's National Pastime" since the 1850s and is deeply woven into American culture and history!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World Series Record</h3>
+                    <p>The New York Yankees hold the record for most World Series championships with 27 titles, far ahead of any other team!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Longest Game</h3>
+                    <p>The longest professional baseball game lasted 8 hours and 25 minutes, played between the Pawtucket Red Sox and Rochester Red Wings in 1981!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Home Run King</h3>
+                    <p>Barry Bonds holds the all-time home run record with 762 career homers, breaking Hank Aaron's long-standing record of 755!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Perfect Game Rarity</h3>
+                    <p>Only 23 perfect games have been thrown in MLB history since 1900 - that's less than one per decade!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Global Reach</h3>
+                    <p>Baseball is played in over 140 countries worldwide and will return to the Olympics in 2028 in Los Angeles!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>⚾ Baseball Positions</h2>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h4>Pitcher (1)</h4>
+                    <p>Throws the ball to the batter</p>
+                </div>
+                <div class="position-card">
+                    <h4>Catcher (2)</h4>
+                    <p>Receives pitches behind home plate</p>
+                </div>
+                <div class="position-card">
+                    <h4>First Base (3)</h4>
+                    <p>Covers first base and the area around it</p>
+                </div>
+                <div class="position-card">
+                    <h4>Second Base (4)</h4>
+                    <p>Covers second base and turns double plays</p>
+                </div>
+                <div class="position-card">
+                    <h4>Third Base (5)</h4>
+                    <p>Guards the "hot corner" near third base</p>
+                </div>
+                <div class="position-card">
+                    <h4>Shortstop (6)</h4>
+                    <p>Covers area between 2nd and 3rd base</p>
+                </div>
+                <div class="position-card">
+                    <h4>Left Field (7)</h4>
+                    <p>Covers left portion of the outfield</p>
+                </div>
+                <div class="position-card">
+                    <h4>Center Field (8)</h4>
+                    <p>Covers center outfield, team's best fielder</p>
+                </div>
+                <div class="position-card">
+                    <h4>Right Field (9)</h4>
+                    <p>Covers right portion of the outfield</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>⚾ Essential Baseball Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Baseball Bats</h3>
+                    <p>Wood, aluminum, or composite bats for different leagues and preferences.</p>
+                    <a href="https://www.eastbay.com/category/baseball/bats.html" class="btn btn-primary" target="_blank">Eastbay</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Baseball Gloves</h3>
+                    <p>Position-specific gloves made from quality leather for optimal performance.</p>
+                    <a href="https://www.dickssportinggoods.com/f/baseball-gloves" class="btn btn-primary" target="_blank">Dick's Sporting Goods</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Baseballs</h3>
+                    <p>Official league baseballs and practice balls for training.</p>
+                    <a href="https://www.baseballexpress.com/baseballs" class="btn btn-primary" target="_blank">Baseball Express</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Helmets, chest protectors, and shin guards for safety.</p>
+                    <a href="https://www.allstarbaseballgear.com/protective-gear" class="btn btn-primary" target="_blank">All-Star Baseball</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Baseball Cleats</h3>
+                    <p>Molded or metal cleats for traction on grass and dirt fields.</p>
+                    <a href="https://www.nike.com/w/baseball-cleats-1gdj0z6ymx6" class="btn btn-primary" target="_blank">Nike</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Tees, nets, and training aids to improve your game.</p>
+                    <a href="https://www.amazon.com/s?k=baseball+training+equipment" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major League Structure</h2>
+            <div class="leagues-grid">
+                <div class="league-card">
+                    <h3>American League</h3>
+                    <ul>
+                        <li>East: Yankees, Red Sox, Blue Jays, Rays, Orioles</li>
+                        <li>Central: Guardians, Twins, White Sox, Tigers, Royals</li>
+                        <li>West: Astros, Angels, Mariners, Rangers, Athletics</li>
+                    </ul>
+                </div>
+                <div class="league-card">
+                    <h3>National League</h3>
+                    <ul>
+                        <li>East: Braves, Phillies, Mets, Marlins, Nationals</li>
+                        <li>Central: Brewers, Cardinals, Cubs, Reds, Pirates</li>
+                        <li>West: Dodgers, Padres, Giants, Rockies, Diamondbacks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Baseball Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Keep Your Eye on the Ball:</strong> Watch the ball from the pitcher's hand all the way to your bat - this is fundamental to hitting.</li>
+                <li><strong>Proper Batting Stance:</strong> Stand with feet shoulder-width apart, knees slightly bent, and weight evenly distributed.</li>
+                <li><strong>Fielding Fundamentals:</strong> Get your glove down early, use both hands when possible, and keep your body in front of the ball.</li>
+                <li><strong>Practice Your Swing:</strong> Consistent practice develops muscle memory - use a tee or soft toss for repetition.</li>
+                <li><strong>Know the Count:</strong> Understand how ball and strike counts affect your approach as both a hitter and pitcher.</li>
+                <li><strong>Base Running Smarts:</strong> Get a good jump, watch the ball, and listen to your base coaches.</li>
+                <li><strong>Mental Game:</strong> Stay focused and confident - baseball is as much mental as it is physical.</li>
+                <li><strong>Teamwork:</strong> Communicate with teammates, back each other up, and play as a unit.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>📊 Baseball Statistics</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Batting Average</h3>
+                    <p>Hits divided by at-bats - measures hitting consistency.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Earned Run Average</h3>
+                    <p>Average earned runs allowed per 9 innings pitched.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>On-Base Percentage</h3>
+                    <p>Measures how often a batter reaches base safely.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Runs Batted In</h3>
+                    <p>Number of runs a batter helps score through hits.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Baseball Skills Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Hitting</h3>
+                    <p>Practice timing, hand-eye coordination, and plate discipline.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Pitching</h3>
+                    <p>Develop control, velocity, and different pitch types.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Fielding</h3>
+                    <p>Work on glove work, footwork, and throwing accuracy.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Base Running</h3>
+                    <p>Improve speed, sliding technique, and base-stealing skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏟️ Famous Baseball Stadiums</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Fenway Park</h3>
+                    <p>Boston Red Sox home since 1912, famous for the Green Monster.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Yankee Stadium</h3>
+                    <p>The House That Ruth Built, home to 27 World Series champions.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Wrigley Field</h3>
+                    <p>Chicago Cubs' historic ballpark known for ivy-covered walls.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Dodger Stadium</h3>
+                    <p>Los Angeles Dodgers' home with stunning mountain views.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Baseball Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Hand-Eye Coordination</h3>
+                    <p>Hitting and fielding improve reflexes and coordination.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Strategic Thinking</h3>
+                    <p>Baseball requires constant decision-making and game strategy.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Physical Fitness</h3>
+                    <p>Running, throwing, and swinging provide excellent exercise.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Team Spirit</h3>
+                    <p>Learn cooperation, leadership, and sportsmanship.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Baseball</h2>
+            <p>Explore the rich history and intricate details of baseball with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Baseball" class="btn btn-info" target="_blank">🌐 Baseball on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Major_League_Baseball" class="btn btn-info" target="_blank">⚾ Major League Baseball</a>
+                <a href="https://en.wikipedia.org/wiki/World_Series" class="btn btn-info" target="_blank">🏆 World Series</a>
+                <a href="https://en.wikipedia.org/wiki/Baseball_statistics" class="btn btn-info" target="_blank">📊 Baseball Statistics</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Play ball! ⚾</p>
+        </footer>
+    </div>
+</body>
+</html>

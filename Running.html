@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Running Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-info {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #e74c3c;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #ffe8e8;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .tips-list li:before {
+            content: "🏃‍♂️ ";
+            margin-right: 0.5rem;
+        }
+
+        .distance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .distance-card {
+            background: #fff5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .distance-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .training-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .plan-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .plan-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .plan-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏃‍♂️ The Ultimate Running Hub</h1>
+            <p class="subtitle">Your complete guide to running, fitness, and achieving your goals</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Running Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🚀 Amazing Running Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Human Evolution</h3>
+                    <p>Humans evolved to be excellent long-distance runners! Our ancestors used persistence hunting, chasing prey until it collapsed from exhaustion.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World Record Speed</h3>
+                    <p>Usain Bolt holds the world record for 100m at 9.58 seconds, reaching a top speed of 27.8 mph (44.7 km/h)!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Marathon Distance</h3>
+                    <p>The marathon distance of 26.2 miles was set at the 1908 Olympics in London to accommodate the royal family's viewing box!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Running High</h3>
+                    <p>The "runner's high" is real! Your body releases endorphins during running, creating natural feelings of euphoria and pain relief.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Burning Calories</h3>
+                    <p>Running burns approximately 100 calories per mile for an average person, making it one of the most efficient forms of exercise!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Heart Health</h3>
+                    <p>Regular running can increase your lifespan by up to 3 years and reduce the risk of heart disease by 45%!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏃‍♀️ Running Distances & Events</h2>
+            <div class="distance-grid">
+                <div class="distance-card">
+                    <h4>5K (3.1 miles)</h4>
+                    <p>Perfect for beginners, usually takes 20-40 minutes</p>
+                </div>
+                <div class="distance-card">
+                    <h4>10K (6.2 miles)</h4>
+                    <p>Great stepping stone, typically 40-70 minutes</p>
+                </div>
+                <div class="distance-card">
+                    <h4>Half Marathon</h4>
+                    <p>13.1 miles, popular challenge distance</p>
+                </div>
+                <div class="distance-card">
+                    <h4>Marathon</h4>
+                    <p>26.2 miles, the ultimate endurance challenge</p>
+                </div>
+                <div class="distance-card">
+                    <h4>Ultra Marathon</h4>
+                    <p>Anything longer than 26.2 miles</p>
+                </div>
+                <div class="distance-card">
+                    <h4>Trail Running</h4>
+                    <p>Off-road running on natural terrain</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>👟 Essential Running Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Running Shoes</h3>
+                    <p>Most important gear! Get properly fitted for your foot type and running style.</p>
+                    <a href="https://www.runningwarehouse.com/catpage-MRFOOT.html" class="btn btn-primary" target="_blank">Running Warehouse</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Running Apparel</h3>
+                    <p>Moisture-wicking shirts, shorts, and weather-appropriate gear.</p>
+                    <a href="https://www.nike.com/w/running-clothing-8lt0rz6ymx6" class="btn btn-primary" target="_blank">Nike Running</a>
+                </div>
+                <div class="gear-item">
+                    <h3>GPS Watch</h3>
+                    <p>Track your pace, distance, and training progress with advanced metrics.</p>
+                    <a href="https://www.garmin.com/en-US/c/sports-fitness/running/" class="btn btn-primary" target="_blank">Garmin</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hydration</h3>
+                    <p>Water bottles, hydration belts, and electrolyte supplements.</p>
+                    <a href="https://www.rei.com/c/hydration" class="btn btn-primary" target="_blank">REI</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Running Accessories</h3>
+                    <p>Compression gear, foam rollers, and recovery tools.</p>
+                    <a href="https://www.roadrunnersports.com/" class="btn btn-primary" target="_blank">Road Runner Sports</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Safety Gear</h3>
+                    <p>Reflective vests, lights, and visibility gear for safe running.</p>
+                    <a href="https://www.amazon.com/s?k=running+safety+gear" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📋 Training Plans</h2>
+            <div class="training-plans">
+                <div class="plan-card">
+                    <h3>Beginner 5K Plan</h3>
+                    <ul>
+                        <li>Week 1-2: Walk/Run intervals</li>
+                        <li>Week 3-4: Increase running time</li>
+                        <li>Week 5-6: Longer continuous runs</li>
+                        <li>Week 7-8: 5K completion</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <h3>10K Training</h3>
+                    <ul>
+                        <li>Build weekly mileage gradually</li>
+                        <li>Include tempo runs</li>
+                        <li>Add interval training</li>
+                        <li>Long runs on weekends</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <h3>Marathon Preparation</h3>
+                    <ul>
+                        <li>16-20 week training program</li>
+                        <li>Peak weekly mileage: 40-70 miles</li>
+                        <li>Long runs up to 20 miles</li>
+                        <li>Tapering before race day</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Running Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Start Slow:</strong> Build your running base gradually to avoid injury. Follow the 10% rule - don't increase weekly mileage by more than 10%.</li>
+                <li><strong>Proper Form:</strong> Land on your midfoot, keep your posture upright, and maintain a slight forward lean from your ankles.</li>
+                <li><strong>Breathing Technique:</strong> Breathe rhythmically - try a 3:2 pattern (inhale for 3 steps, exhale for 2 steps).</li>
+                <li><strong>Listen to Your Body:</strong> Rest days are crucial for recovery and injury prevention. Pain is different from discomfort.</li>
+                <li><strong>Fuel Properly:</strong> Eat a balanced diet with adequate carbs for energy and protein for muscle recovery.</li>
+                <li><strong>Stay Hydrated:</strong> Drink water throughout the day, not just during runs. Monitor urine color as a hydration indicator.</li>
+                <li><strong>Warm Up & Cool Down:</strong> Always start with dynamic stretches and end with static stretching to prevent injury.</li>
+                <li><strong>Cross Train:</strong> Include swimming, cycling, or strength training to build overall fitness and prevent overuse injuries.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🏃‍♂️ Running Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Physical Health</h3>
+                    <p>Improves cardiovascular health, strengthens bones, and builds muscle endurance.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Health</h3>
+                    <p>Reduces stress, anxiety, and depression while boosting mood and confidence.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Weight Management</h3>
+                    <p>Burns calories efficiently and helps maintain a healthy body weight.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Social Connection</h3>
+                    <p>Join running clubs, participate in races, and connect with the running community.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Running Nutrition</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Pre-Run Fuel</h3>
+                    <p>Eat 1-2 hours before running. Focus on easily digestible carbs and avoid high fiber or fat.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>During Long Runs</h3>
+                    <p>For runs over 60 minutes, consume 30-60g of carbs per hour through gels, sports drinks, or snacks.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Post-Run Recovery</h3>
+                    <p>Within 30 minutes, eat a combination of carbs and protein in a 3:1 ratio for optimal recovery.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Daily Nutrition</h3>
+                    <p>Maintain a balanced diet with adequate calories to support your training demands.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Running</h2>
+            <p>Discover the science, history, and techniques behind running with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Running" class="btn btn-info" target="_blank">🌐 Running on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Marathon" class="btn btn-info" target="_blank">🏃‍♂️ Marathon History</a>
+                <a href="https://en.wikipedia.org/wiki/Running_biomechanics" class="btn btn-info" target="_blank">⚙️ Running Biomechanics</a>
+                <a href="https://en.wikipedia.org/wiki/List_of_world_records_in_athletics" class="btn btn-info" target="_blank">🏆 World Records</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Every mile begins with a single step! 🏃‍♂️</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Hub - Everything You Need to Know</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #764ba2;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .wikipedia-section {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+        }
+
+        .wikipedia-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            font-weight: bold;
+        }
+
+        .wikipedia-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        .gear-section {
+            background: #f8f9fa;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gear-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .gear-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gear-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .gear-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+        }
+
+        .shop-btn {
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .shop-btn:hover {
+            background: #45b7aa;
+            transform: scale(1.05);
+        }
+
+        .rules-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .rule-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .rule-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .basketball-emoji {
+            font-size: 2rem;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🏀 Basketball Hub 🏀</h1>
+            <p class="subtitle">Your Ultimate Source for Basketball Information</p>
+            <nav class="navigation">
+                <a href="#facts" class="nav-btn">Fun Facts</a>
+                <a href="#wikipedia" class="nav-btn">Learn More</a>
+                <a href="#gear" class="nav-btn">Buy Gear</a>
+                <a href="#rules" class="nav-btn">Basic Rules</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="facts" class="section">
+            <h2>🤯 Amazing Basketball Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>🏀 Basketball's Birth</h3>
+                    <p>Basketball was invented in 1891 by Dr. James Naismith in Springfield(The Town Of The Simpsons!), Massachusetts. He used peach baskets and a soccer ball!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🌟 NBA Record</h3>
+                    <p>Wilt Chamberlain holds the record for most points in a single NBA game with 100 points, scored on March 2, 1962.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🏆 Dream Team</h3>
+                    <p>The 1992 U.S. Olympic basketball team, known as the "Dream Team," is considered the greatest basketball team ever assembled.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>📏 Court Dimensions</h3>
+                    <p>An NBA court is 94 feet long and 50 feet wide. The hoop is exactly 10 feet high from the ground.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>⏰ Shot Clock</h3>
+                    <p>The shot clock was introduced in 1954 and is set to 24 seconds in the NBA. It revolutionized the pace of the game!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🌍 Global Sport</h3>
+                    <p>Basketball is played by over 450 million people worldwide, making it one of the most popular sports globally.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="wikipedia" class="section wikipedia-section">
+            <h2>📚 Want to Learn More?</h2>
+            <p>Dive deeper into the world of basketball with these comprehensive Wikipedia resources:</p>
+            <div>
+                <a href="https://en.wikipedia.org/wiki/Basketball" target="_blank" class="wikipedia-btn">Basketball Overview</a>
+                <a href="https://en.wikipedia.org/wiki/National_Basketball_Association" target="_blank" class="wikipedia-btn">NBA History</a>
+                <a href="https://en.wikipedia.org/wiki/Basketball_rules" target="_blank" class="wikipedia-btn">Official Rules</a>
+                <a href="https://en.wikipedia.org/wiki/List_of_NBA_players" target="_blank" class="wikipedia-btn">Famous Players</a>
+            </div>
+        </section>
+
+        <section id="gear" class="section gear-section">
+            <h2>🛒 Where to Buy Basketball Gear</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Get equipped with the best basketball gear from these trusted retailers:</p>
+            <div class="gear-grid">
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">🏀</div>
+                    <h3>Basketballs</h3>
+                    <p>Official size basketballs for indoor and outdoor play</p>
+                    <a href="https://www.amazon.com/s?k=basketball" target="_blank" class="shop-btn">Shop on Amazon</a>
+                </div>
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">👟</div>
+                    <h3>Basketball Shoes</h3>
+                    <p>High-performance basketball sneakers from top brands</p>
+                    <a href="https://www.nike.com/basketball" target="_blank" class="shop-btn">Shop Nike</a>
+                </div>
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">👕</div>
+                    <h3>Jerseys & Apparel</h3>
+                    <p>Team jerseys, shorts, and training apparel</p>
+                    <a href="https://www.adidas.com/us/basketball" target="_blank" class="shop-btn">Shop Adidas</a>
+                </div>
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">🏀</div>
+                    <h3>Hoops & Accessories</h3>
+                    <p>Basketball hoops, nets, and training equipment</p>
+                    <a href="https://www.dickssportinggoods.com/basketball" target="_blank" class="shop-btn">Shop Dick's</a>
+                </div>
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">🎽</div>
+                    <h3>Training Gear</h3>
+                    <p>Cones, agility ladders, and skill development tools</p>
+                    <a href="https://www.spalding.com/" target="_blank" class="shop-btn">Shop Spalding</a>
+                </div>
+                <div class="gear-card">
+                    <div style="font-size: 4rem;">🧤</div>
+                    <h3>Protective Gear</h3>
+                    <p>Knee pads, arm sleeves, and injury prevention</p>
+                    <a href="https://www.eastbay.com/basketball" target="_blank" class="shop-btn">Shop Eastbay</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="rules" class="section rules-section">
+            <h2>📋 Basic Basketball Rules</h2>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <h4>👥 Team Size</h4>
+                    <p>5 players per team on the court at once</p>
+                </div>
+                <div class="rule-item">
+                    <h4>⏱️ Game Duration</h4>
+                    <p>4 quarters of 12 minutes each (NBA)</p>
+                </div>
+                <div class="rule-item">
+                    <h4>🎯 Scoring</h4>
+                    <p>2 points for regular shots, 3 for beyond the arc</p>
+                </div>
+                <div class="rule-item">
+                    <h4>⚡ Shot Clock</h4>
+                    <p>24 seconds to attempt a shot</p>
+                </div>
+                <div class="rule-item">
+                    <h4>🚫 Fouls</h4>
+                    <p>6 personal fouls results in disqualification</p>
+                </div>
+                <div class="rule-item">
+                    <h4>🏃 Violations</h4>
+                    <p>Traveling, double dribble, out of bounds</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><span class="basketball-emoji">🏀</span> Basketball Hub - Your Gateway to Basketball Knowledge <span class="basketball-emoji">🏀</span></p>
+            <p>© 2025 myApps.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.fact-card, .gear-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>

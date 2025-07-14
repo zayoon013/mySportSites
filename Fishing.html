@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Fishing Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-info {
+            background: #FF9800;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e8f5e8;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .tips-list li:before {
+            content: "🎣 ";
+            margin-right: 0.5rem;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .species-card {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .species-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎣 The Ultimate Fishing Hub</h1>
+            <p class="subtitle">Your complete guide to the art and science of fishing</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Fishing Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🐟 Amazing Fishing Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Ancient Sport</h3>
+                    <p>Fishing is one of humanity's oldest activities, dating back over 40,000 years! Archaeological evidence shows early humans used hooks made from bone and stone.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Biggest Fish Ever</h3>
+                    <p>The largest fish ever caught was a Great White Shark weighing 2,664 pounds, caught off the coast of Australia in 1959.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Fish Sleep Too!</h3>
+                    <p>Fish don't have eyelids, but they do rest! They enter a state similar to sleep where they remain motionless and their breathing slows down.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Super Senses</h3>
+                    <p>Fish can detect vibrations in water through their lateral line system, which acts like a sixth sense to feel movement and pressure changes.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Million Dollar Industry</h3>
+                    <p>Recreational fishing contributes over $125 billion annually to the U.S. economy and supports more than 800,000 jobs!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Fish Memory Myth</h3>
+                    <p>Contrary to popular belief, fish don't have 3-second memories. Goldfish can remember things for months, and some fish species can remember for years!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Popular Fish Species</h2>
+            <div class="species-grid">
+                <div class="species-card">
+                    <h4>Bass</h4>
+                    <p>Popular freshwater game fish known for their fighting spirit</p>
+                </div>
+                <div class="species-card">
+                    <h4>Trout</h4>
+                    <p>Prized for their beauty and taste, found in cold, clean waters</p>
+                </div>
+                <div class="species-card">
+                    <h4>Salmon</h4>
+                    <p>Anadromous fish that migrate from ocean to freshwater to spawn</p>
+                </div>
+                <div class="species-card">
+                    <h4>Tuna</h4>
+                    <p>Fast-swimming ocean fish, highly valued for sport and food</p>
+                </div>
+                <div class="species-card">
+                    <h4>Catfish</h4>
+                    <p>Bottom-dwelling fish with whisker-like barbels</p>
+                </div>
+                <div class="species-card">
+                    <h4>Pike</h4>
+                    <p>Aggressive predator fish with sharp teeth and torpedo-shaped body</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🎣 Essential Fishing Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Fishing Rods</h3>
+                    <p>Choose from spinning, baitcasting, or fly rods based on your fishing style.</p>
+                    <a href="https://www.cabelas.com/category/Fishing-Rods/104792580" class="btn btn-primary" target="_blank">Shop at Cabela's</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Reels</h3>
+                    <p>Spinning reels for beginners, baitcasting for precision, fly reels for fly fishing.</p>
+                    <a href="https://www.basspro.com/shop/en/fishing-reels" class="btn btn-primary" target="_blank">Shop at Bass Pro</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Fishing Line</h3>
+                    <p>Monofilament, fluorocarbon, or braided line - each has unique properties.</p>
+                    <a href="https://www.dickssportinggoods.com/f/fishing-line" class="btn btn-primary" target="_blank">Shop at Dick's</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Hooks & Lures</h3>
+                    <p>Wide variety of hooks, spinners, jigs, and soft plastics for different fish.</p>
+                    <a href="https://www.tacklewarehouse.com/" class="btn btn-primary" target="_blank">Tackle Warehouse</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Tackle Box</h3>
+                    <p>Organize your gear with a quality tackle box or fishing backpack.</p>
+                    <a href="https://www.amazon.com/s?k=fishing+tackle+box" class="btn btn-primary" target="_blank">Shop on Amazon</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Fishing Net</h3>
+                    <p>Essential for landing fish safely without damaging them.</p>
+                    <a href="https://www.sportsmansguide.com/category/fishing-nets" class="btn btn-primary" target="_blank">Sportsman's Guide</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Fishing Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Early Bird Gets the Fish:</strong> Fish are most active during dawn and dusk when water temperatures are cooler.</li>
+                <li><strong>Weather Matters:</strong> Overcast days are often better for fishing as fish feel more secure without bright sunlight.</li>
+                <li><strong>Match the Hatch:</strong> Use lures and bait that resemble what fish are naturally eating in that area.</li>
+                <li><strong>Patience is Key:</strong> Stay quiet and still. Fish can sense vibrations and will avoid areas with too much disturbance.</li>
+                <li><strong>Check Water Temperature:</strong> Fish are cold-blooded and their activity levels depend on water temperature.</li>
+                <li><strong>Use the Right Knot:</strong> A strong knot is crucial. The Palomar knot is reliable for most situations.</li>
+                <li><strong>Observe Nature:</strong> Look for birds diving, fish jumping, or other signs of fish activity.</li>
+                <li><strong>Keep Your Hooks Sharp:</strong> Dull hooks result in missed fish. Check and sharpen them regularly.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🌍 Fishing Locations</h2>
+            <p>From peaceful mountain streams to exciting deep-sea adventures, fishing offers countless opportunities:</p>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Freshwater Lakes</h3>
+                    <p>Perfect for bass, trout, and panfish. Great for beginners and families.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Rivers & Streams</h3>
+                    <p>Flowing water provides excellent trout and salmon fishing opportunities.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Ocean Fishing</h3>
+                    <p>Saltwater fishing offers the chance to catch larger species like tuna and marlin.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Ponds</h3>
+                    <p>Small, accessible fishing spots perfect for kids and casual fishing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Fishing</h2>
+            <p>Want to dive deeper into the world of fishing? Check out these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Fishing" class="btn btn-info" target="_blank">🌐 Fishing on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Recreational_fishing" class="btn btn-info" target="_blank">🎣 Recreational Fishing</a>
+                <a href="https://en.wikipedia.org/wiki/Fishing_techniques" class="btn btn-info" target="_blank">🎯 Fishing Techniques</a>
+                <a href="https://en.wikipedia.org/wiki/List_of_fish_species" class="btn btn-info" target="_blank">🐟 Fish Species</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps.</p>
+            <p style="margin-top: 0.5rem;">
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

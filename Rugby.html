@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Rugby Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-info {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 0.5rem;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gear-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .gear-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #27ae60;
+        }
+
+        .gear-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: #e8f5e8;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .tips-list li:before {
+            content: "🏉 ";
+            margin-right: 0.5rem;
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .format-card {
+            background: #f0f8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .format-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .wiki-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #2c5530, #4a7c59);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .wiki-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .position-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .position-card {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .position-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .position-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .position-card li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏉 The Ultimate Rugby Hub</h1>
+            <p class="subtitle">Your complete guide to the sport of rugby - union, league, and beyond</p>
+            <div class="nav-buttons">
+                <a href="#facts" class="btn btn-primary">Fun Facts</a>
+                <a href="#gear" class="btn btn-secondary">Rugby Gear</a>
+                <a href="#tips" class="btn btn-info">Pro Tips</a>
+            </div>
+        </header>
+
+        <section id="facts" class="section">
+            <h2>🏆 Amazing Rugby Fun Facts</h2>
+            <div class="fun-facts">
+                <div class="fact-card">
+                    <h3>Birth of Rugby</h3>
+                    <p>Rugby was invented in 1823 at Rugby School in England when William Webb Ellis picked up a football and ran with it during a soccer game!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>World Cup Glory</h3>
+                    <p>The Rugby World Cup is the third-largest sporting event in the world, with over 4 billion cumulative TV viewers!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>No Protective Gear</h3>
+                    <p>Unlike American football, rugby players wear minimal protective gear - just a mouthguard and maybe a scrum cap!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Two Main Codes</h3>
+                    <p>Rugby Union (15 players) and Rugby League (13 players) are the two main forms, with different rules and strategies.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Olympic Sport</h3>
+                    <p>Rugby Sevens (7 players) returned to the Olympics in 2016 after a 92-year absence, bringing rugby back to the global stage!</p>
+                </div>
+                <div class="fact-card">
+                    <h3>Continuous Play</h3>
+                    <p>Rugby has 80 minutes of continuous play with no timeouts, making it one of the most physically demanding sports!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏉 Rugby Formats & Variations</h2>
+            <div class="format-grid">
+                <div class="format-card">
+                    <h4>Rugby Union</h4>
+                    <p>15 players per team, traditional format with lineouts and scrums</p>
+                </div>
+                <div class="format-card">
+                    <h4>Rugby League</h4>
+                    <p>13 players per team, faster-paced with 6-tackle rule</p>
+                </div>
+                <div class="format-card">
+                    <h4>Rugby Sevens</h4>
+                    <p>7 players per team, shorter matches, Olympic format</p>
+                </div>
+                <div class="format-card">
+                    <h4>Rugby Tens</h4>
+                    <p>10 players per team, growing format for amateur play</p>
+                </div>
+                <div class="format-card">
+                    <h4>Touch Rugby</h4>
+                    <p>Non-contact version, great for beginners and mixed teams</p>
+                </div>
+                <div class="format-card">
+                    <h4>Beach Rugby</h4>
+                    <p>Played on sand with modified rules, fun summer variant</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gear" class="section">
+            <h2>🏉 Essential Rugby Gear & Where to Buy</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Rugby Boots</h3>
+                    <p>Sturdy boots with metal or plastic studs for grip on grass fields.</p>
+                    <a href="https://www.lovell-rugby.co.uk/Rugby-Boots" class="btn btn-primary" target="_blank">Lovell Rugby</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Rugby Jersey</h3>
+                    <p>Durable, stretchy jerseys designed to withstand tackles and scrums.</p>
+                    <a href="https://www.rugbystore.co.uk/rugby-shirts" class="btn btn-primary" target="_blank">Rugby Store</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Rugby Shorts</h3>
+                    <p>Reinforced shorts built for the physical demands of rugby.</p>
+                    <a href="https://www.worldrugbyshop.com/rugby-shorts" class="btn btn-primary" target="_blank">World Rugby Shop</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Protective Gear</h3>
+                    <p>Mouthguards, scrum caps, and shoulder pads for safety.</p>
+                    <a href="https://www.canterbury.com/us/rugby/protection" class="btn btn-primary" target="_blank">Canterbury</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Rugby Ball</h3>
+                    <p>Official size rugby balls for training and match play.</p>
+                    <a href="https://www.gilbert-rugby.com/rugby-balls" class="btn btn-primary" target="_blank">Gilbert Rugby</a>
+                </div>
+                <div class="gear-item">
+                    <h3>Training Equipment</h3>
+                    <p>Tackle bags, cones, and training gear for skill development.</p>
+                    <a href="https://www.amazon.com/s?k=rugby+training+equipment" class="btn btn-primary" target="_blank">Amazon</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📍 Rugby Positions</h2>
+            <div class="position-grid">
+                <div class="position-card">
+                    <h3>Forwards (1-8)</h3>
+                    <ul>
+                        <li>Props (1, 3) - Scrum anchors</li>
+                        <li>Hooker (2) - Lineout thrower</li>
+                        <li>Locks (4, 5) - Lineout jumpers</li>
+                        <li>Back Row (6, 7, 8) - Dynamic forwards</li>
+                    </ul>
+                </div>
+                <div class="position-card">
+                    <h3>Backs (9-15)</h3>
+                    <ul>
+                        <li>Scrum-Half (9) - Link between forwards and backs</li>
+                        <li>Fly-Half (10) - Playmaker and kicker</li>
+                        <li>Centers (12, 13) - Attacking midfield</li>
+                        <li>Wings (11, 14) - Speed and finishing</li>
+                        <li>Fullback (15) - Last line of defense</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2>💡 Pro Rugby Tips</h2>
+            <ul class="tips-list">
+                <li><strong>Master the Basics:</strong> Focus on catching, passing, and rucking fundamentals before advanced skills.</li>
+                <li><strong>Body Position:</strong> Keep your body low in contact situations and always protect the ball.</li>
+                <li><strong>Communication:</strong> Constant communication with teammates is crucial for successful plays and defense.</li>
+                <li><strong>Fitness First:</strong> Rugby demands exceptional cardiovascular fitness and strength - train accordingly.</li>
+                <li><strong>Support Play:</strong> Always support the ball carrier and be ready to receive or recycle possession.</li>
+                <li><strong>Set Piece Excellence:</strong> Practice scrums and lineouts repeatedly as they're crucial for possession.</li>
+                <li><strong>Tackle Technique:</strong> Use proper tackling form - get low, drive through, and wrap up safely.</li>
+                <li><strong>Game Awareness:</strong> Develop field vision to read the game and make quick decisions under pressure.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Rugby Skills Development</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Passing</h3>
+                    <p>Master spiral passes, pop passes, and off-loads in contact situations.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Tackling</h3>
+                    <p>Learn proper tackling technique for safety and effectiveness.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Rucking</h3>
+                    <p>Master the art of securing possession at the breakdown.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Kicking</h3>
+                    <p>Develop place kicking, drop kicking, and tactical kicking skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Major Rugby Competitions</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Rugby World Cup</h3>
+                    <p>The ultimate prize in rugby union, held every four years.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Six Nations</h3>
+                    <p>Annual championship between England, France, Ireland, Italy, Scotland, and Wales.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Rugby Championship</h3>
+                    <p>Southern Hemisphere competition featuring Argentina, Australia, New Zealand, and South Africa.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>World Rugby Sevens</h3>
+                    <p>Global sevens circuit with tournaments worldwide, including Olympics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥇 Rugby Benefits</h2>
+            <div class="gear-grid">
+                <div class="gear-item">
+                    <h3>Physical Fitness</h3>
+                    <p>Builds strength, endurance, agility, and overall cardiovascular health.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Mental Toughness</h3>
+                    <p>Develops resilience, decision-making under pressure, and mental strength.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Teamwork</h3>
+                    <p>Teaches collaboration, communication, and working toward common goals.</p>
+                </div>
+                <div class="gear-item">
+                    <h3>Character Building</h3>
+                    <p>Instills respect, discipline, and sportsmanship values.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>📚 Learn More About Rugby</h2>
+            <p>Dive deeper into the world of rugby with these comprehensive resources:</p>
+            <div class="nav-buttons" style="margin-top: 1.5rem;">
+                <a href="https://en.wikipedia.org/wiki/Rugby_football" class="btn btn-info" target="_blank">🌐 Rugby on Wikipedia</a>
+                <a href="https://en.wikipedia.org/wiki/Rugby_union" class="btn btn-info" target="_blank">🏉 Rugby Union</a>
+                <a href="https://en.wikipedia.org/wiki/Rugby_league" class="btn btn-info" target="_blank">⚡ Rugby League</a>
+                <a href="https://en.wikipedia.org/wiki/Rugby_World_Cup" class="btn btn-info" target="_blank">🏆 Rugby World Cup</a>
+            </div>
+        </section>
+
+        <footer class="section" style="text-align: center; background: rgba(255,255,255,0.1); color: white;">
+            <p>&copy; 2025 myApps. Rugby - where legends are made! 🏉</p>
+        </footer>
+    </div>
+</body>
+</html>
